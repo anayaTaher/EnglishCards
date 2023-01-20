@@ -1,0 +1,121 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  color: #FFFFFF;
+}
+
+body {
+  position: relative;
+  width: 97vw;
+  height: 97vh;
+  background-color: #000;
+}
+
+.card {
+  font-size: 3em;
+  width: 400px;
+  height: 280px;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+  cursor: pointer;
+}
+
+.front, .back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  position: absolute;
+}
+
+.front {
+  transform: rotateY(0deg);
+  background-color: #108585;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #17aa7e;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+#word-list {
+  position: absolute;
+  top: calc(50% - 206px);
+  left: calc(50% - 220px);
+  border: 2px solid #fff;
+  width: 440px;
+  height: 412px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.progress {
+  position: absolute;
+  top: calc(50% - 262px);
+  left: calc(50% - 52px);
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px 5px 0 0;
+  background-color: #7e064c;
+  border: 1.5px solid #fff;
+  border-width: 1.5px 1.5px 0 1.5px;
+}
+
+.user-input {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 1.5em;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: linear-gradient(to right, #095a7a, #077940);
+  margin-top: 23px;
+}
+
+.separated {
+  width: 100%;
+  height: 2px;
+  background-color: #FFF;
+  border: none;
+  margin-top: 15px;
+  border-radius: 5px;
+}
+
+#reset {
+  background-color: #b60448;
+  font-size: 1.5em;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  top: 50%;
+  position: relative;
+}
+
+.passed, .failed {
+  font-size: 1.4em;
+  border: 1px solid #FFF;
+  margin: 130px 75px -60px;
+  border-width: 0 0 2px 0;
+  width: fit-content;
+  padding: 0 0 5px 0;
+}
+
+.passed {
+  color: #02a340;
+}
+.failed {
+  color: #c22737;
+}
