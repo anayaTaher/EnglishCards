@@ -62,6 +62,7 @@ const userInput = document.createElement("input")
 userInput.autofocus=  true
 userInput.placeholder = 'Enter your answer'
 userInput.classList.add("user-input")
+userInput.type = 'password';
 wordList.appendChild(userInput)
 
 let currentCard = 0
