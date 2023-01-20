@@ -62,13 +62,12 @@ const userInput = document.createElement("input")
 userInput.autofocus=  true
 userInput.placeholder = 'Enter your answer'
 userInput.classList.add("user-input")
-userInput.type = 'password';
 wordList.appendChild(userInput)
 
 let currentCard = 0
 let correctAnswers = 0
 userInput.addEventListener("keydown", e => {
-  if(e.code == "Enter" || e.code == "NumpadEnter") {
+  if(e.keyCode == 13) {
     let userAnswer = userInput.value
     let correctAnswer = words[currentCard][Object.keys(words[currentCard])[0]]
     if(userAnswer.toUpperCase() === correctAnswer.toUpperCase()) {
