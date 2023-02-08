@@ -1,7 +1,9 @@
 const shuffle = array => {
-  for (let i = 0; i < array.length; i++) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]]
+  for (let loop = 0; loop < 5; loop++) {
+    for (let i = 0; i < array.length; i++) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]]
+    }
   }
   return array
 }
@@ -30,21 +32,13 @@ let showNextCard = _ => {
     cards.forEach((card, index) => card.style.display = (index === currentCard) ? "block" : "none")
   } else {
     wordList.previousSibling.innerHTML = "Done"
-    if(correctAnswers > Math.ceil(cards.length/2)) {
-      wordList.innerHTML = `
-      <p class="passed">You got ${correctAnswers} / ${cards.length} &#128516</p>
-      <button id="reset">Play Again</button>
-      `
-    } else {
-      wordList.innerHTML = `
-      <p class="failed">You got ${correctAnswers} / ${cards.length} &#128546</p>
-      <button id="reset">Play Again</button>
-      `
-    }
-    const resetButton = document.getElementById("reset")
-    resetButton.addEventListener("click", _ => location.reload())
+    wordList.previousSibling.style.backgroundColor = "#117c5c"
+    wordList.innerHTML = `<button class="play-again">Play Again</button>`
+    const playAgainButton = document.getElementsByClassName("play-again")[0]
+    playAgainButton.addEventListener("click", _ => location.reload())
   }
 }
+shuffle(words)
 words.forEach(word => words.push(swap(word)))
 shuffle(words)
 
@@ -54,32 +48,16 @@ wordList.previousSibling.innerHTML = 1 + " / " + words.length
 wordList.previousSibling.classList.add("progress")
 words.forEach(word => addCard(Object.keys(word)[0], word[Object.keys(word)[0]]))
 
-const separated = document.createElement("div")
-separated.classList.add("separated")
-wordList.appendChild(separated)
-
-const userInput = document.createElement("input")
-userInput.autofocus=  true
-userInput.placeholder = 'Enter your answer'
-userInput.classList.add("user-input")
-wordList.appendChild(userInput)
+const nextCard = document.createElement("button")
+nextCard.innerHTML = 'Next Card'
+nextCard.classList.add("next-card")
+wordList.appendChild(nextCard)
 
 let currentCard = 0
-let correctAnswers = 0
-userInput.addEventListener("keydown", e => {
-  if(e.keyCode == 13) {
-    let userAnswer = userInput.value
-    let correctAnswer = words[currentCard][Object.keys(words[currentCard])[0]]
-    if(userAnswer.toUpperCase() === correctAnswer.toUpperCase()) {
-      correctAnswers++
-      wordList.style.borderColor = "#02a340"
-    } else {
-      wordList.style.borderColor = "#c22737"
-    }
-    userInput.value = ""
-    currentCard++
-    showNextCard()
-  }
+nextCard.addEventListener("click", _ => {
+  console.log("Hello")
+  ++currentCard == cards.length-1 && (nextCard.innerHTML = 'Finsih Test')
+  showNextCard()
 })
 
 const cards = document.querySelectorAll(".card")
