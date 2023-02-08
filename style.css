@@ -67,12 +67,12 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 5px 5px 0 0;
-  background-color: #7e064c;
+  background-color: #88235e;
   border: 1.5px solid #fff;
   border-width: 1.5px 1.5px 0 1.5px;
 }
 
-.user-input {
+.next-card {
   width: 100%;
   height: 50px;
   text-align: center;
@@ -82,19 +82,11 @@ body {
   border-radius: 5px;
   background: linear-gradient(to right, #095a7a, #077940);
   margin-top: 23px;
+  cursor: pointer;
 }
 
-.separated {
-  width: 100%;
-  height: 2px;
-  background-color: #FFF;
-  border: none;
-  margin-top: 15px;
-  border-radius: 5px;
-}
-
-#reset {
-  background-color: #b60448;
+.play-again {
+  background-color: #117c5c;
   font-size: 1.5em;
   padding: 20px;
   border-radius: 10px;
@@ -102,20 +94,4 @@ body {
   width: 100%;
   top: 50%;
   position: relative;
-}
-
-.passed, .failed {
-  font-size: 1.4em;
-  border: 1px solid #FFF;
-  margin: 130px 75px -60px;
-  border-width: 0 0 2px 0;
-  width: fit-content;
-  padding: 0 0 5px 0;
-}
-
-.passed {
-  color: #02a340;
-}
-.failed {
-  color: #c22737;
 }
